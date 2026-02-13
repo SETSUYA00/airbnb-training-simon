@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind directives removed for plain CSS compatibility */
+/* If using Tailwind, ensure your build process handles these directives */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -28,11 +27,36 @@ body {
 }
 
 .main-container {
-  @apply max-w-[1140px] 2xl:max-w-[1200px] mx-auto xl:px-0 px-4;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1536px) {
+  .main-container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .swiper-wrapper {
-  @apply md:gap-2 gap-1 justify-between;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .swiper-wrapper {
+    gap: 0.5rem;
+  }
 }
 
 .leaflet-bottom,
@@ -51,25 +75,26 @@ body {
   font-size: 16px !important;
 }
 
-
 ::-webkit-scrollbar {
-  @apply w-2;
+  width: 8px; /* w-2 */
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-rose-400 transition-all duration-300 rounded-[25px];
+  background-color: #fb7185; /* rose-400 */
+  border-radius: 25px;
+  transition: all 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-rose-500;
+  background-color: #f43f5e; /* rose-500 */
 }
-
+/* Removed @apply bg-rose-500; and replaced with standard CSS property if needed */
 ::-webkit-scrollbar-track {
-  @apply bg-rose-100 rounded-[25px];
+  background-color: #ffe4e6; /* rose-100 */
+  border-radius: 25px;
 }
-
 ::-webkit-scrollbar-corner {
-  @apply rounded-[25px];
+  border-radius: 25px;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

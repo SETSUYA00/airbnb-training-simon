@@ -13,6 +13,12 @@ interface HomeProps {
   searchParams?: { [key: string]: string | undefined };
 }
 
+type Listing = {
+  id: string;
+  // Add other properties as needed, e.g. title, description, etc.
+  [key: string]: any;
+};
+
 const Home: FC<HomeProps> = async ({ searchParams }) => {
   const { listings, nextCursor } = await getListings(searchParams);
   const favorites = await getFavorites();
@@ -27,8 +33,14 @@ const Home: FC<HomeProps> = async ({ searchParams }) => {
   }
 
   return (
-    <section className=" main-container pt-16 grid  grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
-      {listings.map((listing) => {
+    <section className="main-container pt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
+      {/* === SIMON'S TEST CHANGE - VISIBLE BANNER === */}
+      <div className="col-span-full text-center mb-12">
+        <h1 className="text-5xl font-bold text-red-600">
+          Airbnb Training - Simon was here! 🚀
+        </h1>
+      </div>
+      {listings.map((listing: Listing) => {
         const hasFavorited = favorites.includes(listing.id);
         return (
           <ListingCard
